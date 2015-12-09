@@ -1,4 +1,4 @@
-import os
+﻿import os
 import copy
 import json
 import pygame as pg
@@ -29,10 +29,10 @@ class _KwargMixin(object):
             setattr(self, setting, settings[setting])
 
 
-def load_all_gfx(directory,colorkey=(0,0,0),accept=(".png",".jpg",".bmp")):
+def load_all_gfx(directory, colorkey=(0, 0, 0),accept=(".png", ".jpg", ".bmp")):
     graphics = {}
     for pic in os.listdir(directory):
-        name,ext = os.path.splitext(pic)
+        name, ext = os.path.splitext(pic)
         if ext.lower() in accept:
             img = pg.image.load(os.path.join(directory, pic))
             if img.get_alpha():
@@ -40,14 +40,14 @@ def load_all_gfx(directory,colorkey=(0,0,0),accept=(".png",".jpg",".bmp")):
             else:
                 img = img.convert()
                 img.set_colorkey(colorkey)
-            graphics[name]=img
+            graphics[name] = img
     return graphics
 
 
 def load_all_music(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
     songs = {}
     for song in os.listdir(directory):
-        name,ext = os.path.splitext(song)
+        name, ext = os.path.splitext(song)
         if ext.lower() in accept:
             songs[name] = os.path.join(directory, song)
     return songs
@@ -55,7 +55,7 @@ def load_all_music(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
 def load_all_sfx(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
     effects = {}
     for fx in os.listdir(directory):
-        name,ext = os.path.splitext(fx)
+        name, ext = os.path.splitext(fx)
         if ext.lower() in accept:
             effects[name] = pg.mixer.Sound(os.path.join(directory, fx))
     return effects
@@ -112,8 +112,8 @@ def color_swap(source_image, swap_map):
             recolor = new_color        
         color_surf.fill(original)
         surf.set_colorkey(original)
-        pg.transform.threshold(surf, img, original, (0,0,0,0),
+        pg.transform.threshold(surf, img, original, (0, 0, 0, 0),
                                recolor, 1, color_surf, True)
-        final.blit(surf, (0,0))
+        final.blit(surf, (0, 0))
     return final
     

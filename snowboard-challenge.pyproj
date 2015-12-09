@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2290427c-9bb8-4940-9aab-79385ddd0d4b}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>main.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="attribution.txt" />
+    <Content Include="resources\courses\Python-Peak.json" />
+    <Content Include="resources\graphics\blacksign.png" />
+    <Content Include="resources\graphics\bluesign.png" />
+    <Content Include="resources\graphics\bottomlifthut.png" />
+    <Content Include="resources\graphics\cables.png" />
+    <Content Include="resources\graphics\canecursor.png" />
+    <Content Include="resources\graphics\crash1.png" />
+    <Content Include="resources\graphics\crash2.png" />
+    <Content Include="resources\graphics\crash3.png" />
+    <Content Include="resources\graphics\crash4.png" />
+    <Content Include="resources\graphics\crash5.png" />
+    <Content Include="resources\graphics\downboard1.png" />
+    <Content Include="resources\graphics\downboard2.png" />
+    <Content Include="resources\graphics\downboard3.png" />
+    <Content Include="resources\graphics\downboardbrake1.png" />
+    <Content Include="resources\graphics\downchair.png" />
+    <Content Include="resources\graphics\elf-palette.png" />
+    <Content Include="resources\graphics\greensign.png" />
+    <Content Include="resources\graphics\hair-palette.png" />
+    <Content Include="resources\graphics\icon-strip.png" />
+    <Content Include="resources\graphics\jump.png" />
+    <Content Include="resources\graphics\leftboard1.png" />
+    <Content Include="resources\graphics\leftboard2.png" />
+    <Content Include="resources\graphics\leftboard3.png" />
+    <Content Include="resources\graphics\leftboardbrake1.png" />
+    <Content Include="resources\graphics\leftboardbrake2.png" />
+    <Content Include="resources\graphics\leftboardbrake3.png" />
+    <Content Include="resources\graphics\leftgate.png" />
+    <Content Include="resources\graphics\passedgate.png" />
+    <Content Include="resources\graphics\pylon.png" />
+    <Content Include="resources\graphics\rightboard1.png" />
+    <Content Include="resources\graphics\rightboard2.png" />
+    <Content Include="resources\graphics\rightboard3.png" />
+    <Content Include="resources\graphics\rightboardbrake1.png" />
+    <Content Include="resources\graphics\rightboardbrake2.png" />
+    <Content Include="resources\graphics\rightboardbrake3.png" />
+    <Content Include="resources\graphics\rightgate.png" />
+    <Content Include="resources\graphics\rock.png" />
+    <Content Include="resources\graphics\skin-palette.png" />
+    <Content Include="resources\graphics\spray1.png" />
+    <Content Include="resources\graphics\spray2.png" />
+    <Content Include="resources\graphics\spray3.png" />
+    <Content Include="resources\graphics\toplifthut.png" />
+    <Content Include="resources\graphics\tree.png" />
+    <Content Include="resources\graphics\upchair0.png" />
+    <Content Include="resources\graphics\upchair1.png" />
+    <Content Include="resources\graphics\upchair2.png" />
+    <Content Include="resources\graphics\upchair3.png" />
+    <Content Include="resources\music\wind.ogg" />
+    <Content Include="resources\sounds\boing1.ogg" />
+    <Content Include="resources\sounds\boing2.ogg" />
+    <Content Include="resources\sounds\edgegrind.ogg" />
+    <Content Include="resources\sounds\edgegrind2.ogg" />
+    <Content Include="resources\sounds\elfgrunt.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animation.py" />
+    <Compile Include="boarding.py" />
+    <Compile Include="chairlift.py" />
+    <Compile Include="course.py" />
+    <Compile Include="course_info_entry.py" />
+    <Compile Include="course_selection_edit.py" />
+    <Compile Include="course_selection_play.py" />
+    <Compile Include="editor.py" />
+    <Compile Include="labels.py" />
+    <Compile Include="main.py" />
+    <Compile Include="main_menu.py" />
+    <Compile Include="obstacles.py" />
+    <Compile Include="prepare.py" />
+    <Compile Include="snowboarder.py" />
+    <Compile Include="state_engine.py" />
+    <Compile Include="tools.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\" />
+    <Folder Include="resources\courses\" />
+    <Folder Include="resources\graphics" />
+    <Folder Include="resources\music\" />
+    <Folder Include="resources\sounds\" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>

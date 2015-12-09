@@ -1,4 +1,4 @@
-import os
+﻿import os
 from random import choice, sample
 import pygame as pg
 import tools
@@ -53,4 +53,4 @@ def make_chair_images():
             chairs.append(tools.color_swap(original, swap_dict))   
     return chairs
     
-CHAIRS = make_chair_images()    
+CHAIRS = make_chair_images()

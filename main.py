@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import pygame as pg
 
 from state_engine import Game, GameState
@@ -14,4 +14,4 @@ states = {"MAIN_MENU": main_menu.MainMenu(),
 game = Game(prepare.SCREEN, states, "MAIN_MENU")
 game.run()
 pg.quit()
-sys.exit()
+sys.exit(0)

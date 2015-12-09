@@ -1,4 +1,4 @@
-import pygame as pg
+﻿import pygame as pg
 
 import prepare
 from obstacles import Tree, RightGate, LeftGate, Jump, Rock
@@ -63,7 +63,9 @@ class Course(object):
             
     def update(self, dt, boarder):
         self.chairlift.update(dt)
-        self.view_rect.center = boarder.rect.center
+        self.view_rect.center = (boarder.rect.center[0],
+                                 int(boarder.rect.center[1] + 
+                                     self.view_rect.height * 0.3))
         self.view_rect.clamp_ip(self.map_rect)
         self.gates.update(boarder)
         self.collidables = {x for x in self.get_section_sprites() if x.rect.colliderect(self.view_rect)}

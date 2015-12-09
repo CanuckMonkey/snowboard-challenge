@@ -1,4 +1,4 @@
-from itertools import cycle
+﻿from itertools import cycle
 import string
 import pygame as pg
 import prepare, tools
@@ -176,8 +176,8 @@ class ButtonGroup(pg.sprite.Group):
 
 
 class Button(pg.sprite.Sprite, tools._KwargMixin):
-    _invisible = pg.Surface((1,1)).convert_alpha()
-    _invisible.fill((0,0,0,0))
+    _invisible = pg.Surface((1, 1)).convert_alpha()
+    _invisible.fill((0, 0, 0, 0))
 
     def __init__(self, topleft, *groups, **kwargs):
         super(Button, self).__init__(*groups)
@@ -216,7 +216,7 @@ class Button(pg.sprite.Sprite, tools._KwargMixin):
         if not any((fill, image, text)):
             return None
         final_image = pg.Surface(self.rect.size).convert_alpha()
-        final_image.fill((0,0,0,0))
+        final_image.fill((0, 0, 0, 0))
         rect = final_image.get_rect()
         fill and final_image.fill(fill, rect)
         image and final_image.blit(image, rect)
@@ -267,7 +267,7 @@ class Button(pg.sprite.Sprite, tools._KwargMixin):
 
         
 class TextBox(object):
-    def __init__(self,rect,**kwargs):
+    def __init__(self, rect, **kwargs):
         self.rect = pg.Rect(rect)
         self.buffer = []
         self.final = None
@@ -279,7 +279,7 @@ class TextBox(object):
         self.accepted = string.ascii_letters+string.digits+string.punctuation+" "
         self.process_kwargs(kwargs)
 
-    def process_kwargs(self,kwargs):
+    def process_kwargs(self, kwargs):
         defaults = {"id" : None,
                     "command" : None,
                     "active" : True,
@@ -299,9 +299,9 @@ class TextBox(object):
                 raise KeyError("InputBox accepts no keyword {}.".format(kwarg))
         self.__dict__.update(defaults)
 
-    def get_event(self,event, mouse_pos):
+    def get_event(self, event, mouse_pos):
         if event.type == pg.KEYDOWN and self.active:
-            if event.key in (pg.K_RETURN,pg.K_KP_ENTER):
+            if event.key in (pg.K_RETURN, pg.K_KP_ENTER):
                 self.execute()
             elif event.key == pg.K_BACKSPACE:
                 if self.buffer:
@@ -313,7 +313,7 @@ class TextBox(object):
 
     def execute(self):
         if self.command:
-            self.command(self.id,self.final)
+            self.command(self.id, self.final)
         self.active = not self.inactive_on_enter
         if self.clear_on_enter:
             self.buffer = []
@@ -327,22 +327,22 @@ class TextBox(object):
                                                       centery=self.rect.centery)
             if self.render_rect.width > self.rect.width-6:
                 offset = self.render_rect.width-(self.rect.width-6)
-                self.render_area = pg.Rect(offset,0,self.rect.width-6,
+                self.render_area = pg.Rect(offset, 0, self.rect.width-6,
                                            self.render_rect.height)
             else:
-                self.render_area = self.rendered.get_rect(topleft=(0,0))
+                self.render_area = self.rendered.get_rect(topleft=(0, 0))
         if pg.time.get_ticks()-self.blink_timer > 200:
             self.blink = not self.blink
             self.blink_timer = pg.time.get_ticks()
 
-    def draw(self,surface):
+    def draw(self, surface):
         outline_color = self.active_color if self.active else self.outline_color
-        outline = self.rect.inflate(self.outline_width*2,self.outline_width*2)
+        outline = self.rect.inflate(self.outline_width*2, self.outline_width*2)
         surface.fill(outline_color,outline)
-        surface.fill(self.color,self.rect)
+        surface.fill(self.color, self.rect)
         if self.rendered:
-            surface.blit(self.rendered,self.render_rect,self.render_area)
+            surface.blit(self.rendered, self.render_rect, self.render_area)
         if self.blink and self.active:
             curse = self.render_area.copy()
             curse.topleft = self.render_rect.topleft
-            surface.fill(self.font_color,(curse.right+1,curse.y,2,curse.h))
+            surface.fill(self.font_color, (curse.right+1, curse.y, 2, curse.h))

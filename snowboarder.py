@@ -1,4 +1,4 @@
-from itertools import cycle
+﻿from itertools import cycle
 
 import pygame as pg
 
@@ -10,13 +10,13 @@ class Snowboarder(pg.sprite.Sprite):
     """A snowboarding elf controlled by the player."""
     image_dict = {
             "brake": {
-                    "left": cycle([GFX["leftboardbrake{}".format(x)] for x in (1,2,3)]),                        
-                    "right": cycle([GFX["rightboardbrake{}".format(x)] for x in (1,2,3)]),
+                    "left": cycle([GFX["leftboardbrake{}".format(x)] for x in (1, 2, 3)]),                        
+                    "right": cycle([GFX["rightboardbrake{}".format(x)] for x in (1, 2, 3)]),
                     "down": cycle([GFX["downboardbrake1"]])},
             "no brake": {
-                    "left": cycle([GFX["leftboard{}".format(x)] for x in (1,2,3)]),                                
-                    "right": cycle([GFX["rightboard{}".format(x)] for x in (1,2,3)]),
-                    "down": cycle([GFX["downboard{}".format(x)] for x in (1,2,3)])},
+                    "left": cycle([GFX["leftboard{}".format(x)] for x in (1, 2, 3)]),                                
+                    "right": cycle([GFX["rightboard{}".format(x)] for x in (1, 2, 3)]),
+                    "down": cycle([GFX["downboard{}".format(x)] for x in (1, 2, 3)])},
             "crash": {"down": cycle([GFX["crash{}".format(x)] for x in range(1, 6)])}}
     
     def __init__(self, midbottom, *groups):
@@ -46,7 +46,7 @@ class Snowboarder(pg.sprite.Sprite):
         self.rect = self.image.get_rect(midbottom=(self.xpos, self.ypos))
         self.collider = pg.Rect((0, 0), self.collider_sizes[self.direction])
         self.collider.midbottom = self.rect.midbottom
-        self.spray_images = cycle([GFX["spray{}".format(x)] for x in (1,2,3)])
+        self.spray_images = cycle([GFX["spray{}".format(x)] for x in (1, 2, 3)])
         self.spray_image = next(self.spray_images)
         self.spray_rect = self.spray_image.get_rect()
         self.grunt = SFX["elfgrunt"]
@@ -121,7 +121,7 @@ class Snowboarder(pg.sprite.Sprite):
                 break
       
     def accelerate(self, dt):
-        """Calculate elf's acceleration in diffferent directions."""
+        """Calculate elf's acceleration in different directions."""
         try:   
             mod = -self.x_velocity / abs(self.x_velocity)
         except ZeroDivisionError:

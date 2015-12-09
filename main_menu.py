@@ -1,4 +1,4 @@
-import pygame as pg
+﻿import pygame as pg
 
 from state_engine import GameState
 from labels import Label, Button, ButtonGroup
@@ -44,7 +44,7 @@ class MainMenu(GameState):
         
     def hit_the_slopes(self, *args):
         self.next_state = "COURSE_SELECT_PLAY"
-        self.done  = True
+        self.done = True
         
     def get_event(self, event):
         self.buttons.get_event(event)
