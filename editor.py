@@ -23,12 +23,12 @@ class Editor(GameState):
 
         button_info = [["Tree", prepare.GFX["tree"]],
                        ["Rock", prepare.GFX["rock"]],
-                       ["Right Gate", prepare.GFX["rightgate"]],
-                       ["Left Gate", prepare.GFX["leftgate"]],
+                       ["RightGate", prepare.GFX["rightgate"]],
+                       ["LeftGate", prepare.GFX["leftgate"]],
                        ["Jump", prepare.GFX["jump"]],
-                       ["Green Sign", prepare.GFX["greensign"]],
-                       ["Blue Sign", prepare.GFX["bluesign"]],
-                       ["Black Sign", prepare.GFX["blacksign"]]]
+                       ["GreenSign", prepare.GFX["greensign"]],
+                       ["BlueSign", prepare.GFX["bluesign"]],
+                       ["BlackSign", prepare.GFX["blacksign"]]]
         icons = tools.strip_from_sheet(sheet, (0, 0), (48, 48), 8)
         hovers = []
         for icon in icons:
@@ -55,7 +55,11 @@ class Editor(GameState):
                    **style)
             left += w
 
-        #self.buttons.update()
+    def select_obstacle(self, type):
+        pass
+
+    def create_obstacle(self, type):
+        pass
 
     def startup(self, persistent):
         """Creates a Course object from the previously selected JSON file."""
