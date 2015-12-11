@@ -21,19 +21,19 @@ class Editor(GameState):
     def make_buttons(self):
         sheet = prepare.GFX["icon-strip"]
 
-        button_info = [["Tree", prepare.GFX["tree"]],
-                       ["Rock", prepare.GFX["rock"]],
-                       ["RightGate", prepare.GFX["rightgate"]],
-                       ["LeftGate", prepare.GFX["leftgate"]],
-                       ["Jump", prepare.GFX["jump"]],
-                       ["GreenSign", prepare.GFX["greensign"]],
-                       ["BlueSign", prepare.GFX["bluesign"]],
-                       ["BlackSign", prepare.GFX["blacksign"]]]
+        button_info = [[Tree, prepare.GFX["tree"]],
+                       [Rock, prepare.GFX["rock"]],
+                       [RightGate, prepare.GFX["rightgate"]],
+                       [LeftGate, prepare.GFX["leftgate"]],
+                       [Jump, prepare.GFX["jump"]],
+                       [GreenSign, prepare.GFX["greensign"]],
+                       [BlueSign, prepare.GFX["bluesign"]],
+                       [BlackSign, prepare.GFX["blacksign"]]]
         icons = tools.strip_from_sheet(sheet, (0, 0), (48, 48), 8)
         hovers = []
         for icon in icons:
             hover = pg.Surface((48, 48))
-            hover.fill((127, 127, 127))
+            hover.fill(pg.Color("gray70"))
             hover.blit(icon, (0, 0))
             #hover.set_colorkey((72, 96, 74))
             hovers.append(hover)
@@ -43,19 +43,23 @@ class Editor(GameState):
             
         self.buttons = ButtonGroup()
         style = {"button_size": (48, 48),
-                 #"hover_fill_color": pg.Color(255, 255, 255, 0),
+                 #"hover_fill_color": pg.Color(255, 255, 255, 127),
                  "hover_text_color": pg.Color("gray90")}
         w, h = style["button_size"]
-        left = self.screen_rect.centerx - (w * 4)
+        gap = 10
+        left = int(self.screen_rect.centerx - (w * 4 + gap * 3.5))
         top = 30
         for text, hoverold, image, hover in button_info:
             Button((left, top), self.buttons,
-                   idle_image = image,
-                   hover_image = hover,
+                   #call=self.select_obstacle(text),
+                   call=self.select_obstacle,
+                   args=text,
+                   idle_image=image,
+                   hover_image=hover,
                    **style)
-            left += w
+            left += (w + gap)
 
-    def select_obstacle(self, type):
+    def select_obstacle(self, *args):
         pass
 
     def create_obstacle(self, type):
